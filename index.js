@@ -62,10 +62,10 @@ puppeteer.launch(config.launchOptions).then(async browser => {
   //const browser = await puppeteer.launch(); //taking pdf obly works in headless mode
   const page = await browser.newPage();
   await page.setViewport({ width: 1920, height: 1080});
-  await page.goto('https://eusb.webcomcpq.com/login.aspx');
-  await page.type(LoginPage.email, "bturgay");
-  await page.type(LoginPage.password, "Password1234");
-  await page.type(LoginPage.domain, "unifygermany");
+  await page.goto(''); //in order to protect website there willbe no link
+  await page.type(LoginPage.email, "");
+  await page.type(LoginPage.password, "");
+  await page.type(LoginPage.domain, "");
   await page.click(LoginPage.loginButton);
   await page.waitForSelector(MainPage.WAIT,{waitUntil:"domcontentloaded"});
   
@@ -76,7 +76,7 @@ puppeteer.launch(config.launchOptions).then(async browser => {
   await page.evaluate(() => {
     document.querySelector("#quote-info-section > div > div:nth-child(1) > div > div:nth-child(3) > div > select > option:nth-child(4)").setAttribute("value","Herweck AG");
   })
-  await page.select(Quote.DistributorS,'Herweck AG');
+  await page.select(Quote.DistributorS,'');
   
   await page.waitForSelector(Quote.ConfigureB,{waitUntil: "networkidle2"});
   
@@ -106,14 +106,14 @@ puppeteer.launch(config.launchOptions).then(async browser => {
   await page.evaluate(() => {
     document.querySelector("#attributesContainer > div > div:nth-child(2) > div.attributes.fiori3-attributes.flex > div:nth-child(6) > select > option:nth-child(7)").setAttribute("value","OpenScape Voice");
   })
-  await page.select(SolutionS.ProductC,'OpenScape Voice');
+  await page.select(SolutionS.ProductC,'');
   
   
   await page.waitForSelector(SolutionS.SProduct,{waitUntil:'domcontentloaded'});
   await page.evaluate(() => {
     document.querySelector("#attributesContainer > div > div:nth-child(2) > div.attributes.fiori3-attributes.flex > div:nth-child(7) > select > option:nth-child(2)").setAttribute("value","OpenScape Voice");
   })
-  await page.select(SolutionS.SProduct,'OpenScape Voice');
+  await page.select(SolutionS.SProduct,'');
   
   await page.waitForSelector('#attributesContainer > div > div:nth-child(2) > div.attributes.fiori3-attributes.flex > div:nth-child(8) > button',{waitUntil:'networkidle2'});
   await page.click('#attributesContainer > div > div:nth-child(2) > div.attributes.fiori3-attributes.flex > div:nth-child(8) > button');
